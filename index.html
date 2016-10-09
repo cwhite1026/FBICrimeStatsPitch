@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FBICrimeStats Plotter</title>
+  <meta charset="utf-8">
+  <meta name="description" content="FBICrimeStats Plotter">
+  <meta name="author" content="Catherine White">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>FBICrimeStats Plotter</h1>
+    <h2>Visualizing FBI Murder Statistics</h2>
+    <p>Catherine White<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Every year, the FBI publishes the Crime in the US (CIUS) report, which includes a wealth of data on different crimes.  This data is distributed as a group of about 300 tables, each in their own Excel file, showing aggregate statistics on different crimes grouped by location, type, victim characteristics, or other variables.</p>
+
+<p>The specific question that the FBICrimeStats app answers is: &quot;What murder weapons are used in different circumstances?&quot;</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Motivation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The CIUS tables can be ambiguously named and the information sought is often hard to find.</li>
+<li>Even with the correct table located, it can be difficult to quickly compare different categories to one another: visualizations are much easier to comprehend quickly.</li>
+<li>Many of the variables have more categories than are of interest.  Letting the user choose which categories are displayed allows for higher information content on a single plot.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app has 3 tabs.</p>
+
+<p><img src="assets/img/tabs.png" alt="500"></p>
+
+<p>The &quot;Welcome&quot; tab has information about the app and instructions on how to use it, the &quot;Plot&quot; tab contains the interactive plot of the CIUS murder by circumstance and weapon, and the &quot;Data tables&quot; tab that shows the data as it was released by the FBI.</p>
+
+<p>The main purpose of the app is the Plot tab, which allows you to choose a subset of the data to plot on a stacked bar chart.  You can choose which variable is used to split the data into panels, which is shown along the x-axis, and which is used as the fill color for the stacked bars.</p>
+
+<p>The variables for this data set are &quot;Circumstance,&quot; which is the context in which the murder was committed, &quot;Weapon,&quot; which is the murder weapon used, and &quot;Year,&quot; which is the year the murders were committed.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>An example plot is shown that highlights guns vs other murder weapons for felony-type circumstances, non-felony-type circumstances, and unknown circumstances from 2010-2015.</p>
+
+<pre><code class="r">circumstances &lt;- c(&quot;Felony type total&quot;, &quot;Other than felony type total&quot;, &quot;Unknown&quot;)
+weapons &lt;- c(&quot;Handguns&quot;, &quot;Rifles&quot;, &quot;Shotguns&quot;, &quot;Other guns or type not stated&quot;)
+years &lt;- c(2010, 2011, 2012, 2013, 2014, 2015)
+dat &lt;- prep_data(dataset, &quot;Circumstances&quot;, circumstances, &quot;Year&quot;, years, &quot;Weapon&quot;, weapons)
+stacked_bar(dat, &quot;Year&quot;, &quot;Weapon&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Data'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Motivation'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The App'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
